@@ -2,6 +2,8 @@
 [CMAKE TUTORIAL - YouTube](https://www.youtube.com/playlist?list=PLalVdRk2RC6o5GHu618ARWh0VO0bFlif4)
 
 ## Episode 1: Understanding the Basics
+[Episode 1 Understanding the Basics](https://www.youtube.com/watch?v=nlKcXPUJGwA)
+
 ### Code
 [Episode 1: Understanding the Basics](./Episode-1_Understanding-The-Basics)
 
@@ -29,6 +31,7 @@
 - It can be compiled by running `make` in `./out/build/`.
 
 ## Episode 2: Libraries | Installing | Pairing with Executables
+[Episode 2 Libraries | Installing | Pairing with Executables](https://www.youtube.com/watch?v=DDHCEE_PHOU)
 
 ### Install
 - Code: [Install](./Episode-2_Libraries_Installing_Pairing-with-Executables/Install)
@@ -60,4 +63,35 @@
 
 > ./test/testsome
 2 + 3 = 5
+```
+
+## Episode 3: Git Submodules
+[Episode 3 Git Submodules](https://www.youtube.com/watch?v=ED-WUk440qc)
+
+### Code
+[Episode 3: Git Submodules](./Episode-3_Git-Submodules)
+
+### Git Submodules
+- Important: Stage the changes after adding a Git submodule before continuing to work on that repository or you might get weird errors
+- Prerequisite: The following libraries are installed
+  - `libglu1-mesa-dev`
+  - `freeglut3-dev`
+  - `mesa-common-dev`
+- The CMake command `find_package(Git QUIET)` quietly makes sure that Git is installed. If found, the local variable `GIT_FOUND` is set to true.
+- The CMake command `if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}.git")` is a conditional that checks if `GIT_FOUND` is true and whether the `.git` directory exists.
+- The CMake command `option(GIT_SUBMODULE "Check submodules during build" ON)` sets the variable `GIT_SUBMODULE` to `ON` if it is not yet set.
+- The CMake command `message(STATUS "Submodule update")` prints the respective status message.
+- The CMake command
+  ```cmake
+  execute_process(COMMAND ${GIT_EXECUTABLE} submodule update --init --recursive
+                  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+                  RESULT_VARIABLE GIT_SUBMOD_RESULT)
+  ```
+  Executes the command `${GIT_EXECUTABLE} submodule update --init --recursive` in a separate process. The working directory is set to `${CMAKE_CURRENT_SOURCE_DIR}` and the return value is stored in `GIT_SUBMOD_RESULT`.
+
+#### How to run
+```bash
+> ./configure.sh
+> ./build.sh
+> ./run.sh
 ```
