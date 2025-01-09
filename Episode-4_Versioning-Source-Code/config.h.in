@@ -1,0 +1,3 @@
+#define Versioning_Source_Code_VERSION_MAJOR @Versioning_Source_Code_VERSION_MAJOR@
+#define Versioning_Source_Code_VERSION_MINOR @Versioning_Source_Code_VERSION_MINOR@
+#define Versioning_Source_Code_VERSION_PATCH @Versioning_Source_Code_VERSION_PATCH@

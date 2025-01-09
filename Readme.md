@@ -95,3 +95,21 @@
 > ./build.sh
 > ./run.sh
 ```
+
+## Episode 4: Versioning Source Code
+[Episode 4 Versioning Source Code](https://www.youtube.com/watch?v=K3bx7NYSXVk)
+
+### Code
+[Episode 4: Versioning Source Code](./Episode-4_Versioning_Source_Code)
+
+### Versioning Source Code
+- `VERSION` keyword followed by a version string can be added to the `project` command. This defines the version of the CMake project.
+- The CMake command `configure_file(confg.h.in config.h)` takes a `config.h.in` file and TBD
+- The CMake command `target_include_directories(${PROJECT_NAME} PUBLIC "${PROJECT_BINARY_DIR}")` dynamically adds the build directory as an include search path for the target.
+- For search and replace in `config.h.in` to work, the macros must look like this:
+  ```c
+  #define Versioning_Source_Code_VERSION_MAJOR @Versioning_Source_Code_VERSION_MAJOR@
+  #define Versioning_Source_Code_VERSION_MINOR @Versioning_Source_Code_VERSION_MINOR@
+  #define Versioning_Source_Code_VERSION_PATCH @Versioning_Source_Code_VERSION_PATCH@
+  ```
+  
