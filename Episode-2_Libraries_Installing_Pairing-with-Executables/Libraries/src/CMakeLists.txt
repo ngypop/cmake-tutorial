@@ -1,1 +1,1 @@
-add_library(mearlymath adder.cpp)
+add_library(adder adder.cpp)
