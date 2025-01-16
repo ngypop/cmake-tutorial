@@ -1,0 +1,13 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/Episode-5_Making-Libs-Optional/build"
+            ],
+            "defines": [
+                "USE_ADDER"
+            ]
+        }
+    ]
+}

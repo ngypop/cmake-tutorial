@@ -113,3 +113,31 @@
   #define Versioning_Source_Code_VERSION_PATCH @Versioning_Source_Code_VERSION_PATCH@
   ```
   
+## Episode 5: Making Libs Optional
+[Episode 5 Making Libs Optional](https://www.youtube.com/watch?v=BCgnr6Frmmo)
+
+### Code
+[Episode 5: Making Libs Optional](./Episode-5_Making-Libs-Optional/)
+
+### Optionally use Adder
+- The CMake command `option(USE_ADDER "Use adder library" ON)` creates the variable `USE_ADDER` and sets it to `ON` if it not yet set.
+- The CMake command `list(APPEND EXTRA_LIBS adder)` adds the library name `adder` to the variable `EXTRA_LIBS` such that we can have a single `target_link_libraries()` command at the end.
+- The `configure_file(confg.h.in config.h)` command from episode 4 is used again to define the macro `USE_ADDER`, which is then used by `main.cpp` to decide whether to include `adder.h`, or not. For that, the macro `#cmakedefine USE_ADDER` is used in the configuration template `config.h.in`.
+
+### How to run
+#### Variant 1: Prebuild with adder library
+```bash
+> cmake -S . -B build
+```
+
+#### Variant 2: Prebuild without adder library
+```bash
+> cmake -S . -B build -DUSE_ADDER=OFF
+```
+
+#### Build and run
+```bash
+> cd build
+> make
+> ./Making_Libs_Optional
+```
